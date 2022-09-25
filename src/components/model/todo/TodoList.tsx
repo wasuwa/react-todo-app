@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import {Todo, TodoItem} from './TodoItem'
+import { useEffect, useState } from 'react'
+import { Todo } from '../../ui/Todo/Todo'
 import axios from 'axios';
 
-const TodoList = () => {
-  const [todos, setTodos] = useState<Todo[]>();
+interface TodoModel {
+  id: number
+  title: string
+  done: boolean
+}
+
+export const TodoList = () => {
+  const [todos, setTodos] = useState<TodoModel[]>();
 
   const endpoint: string = process.env.REACT_APP_API_ENDPOINT + '/todos';
 
@@ -26,7 +32,7 @@ const TodoList = () => {
           todos.map((todo, index) => {
             return (
               <div key={index}>
-                <TodoItem id={todo.id} title={todo.title} done={todo.done}/>
+                <Todo title={todo.title} />
               </div>
             )
           })
@@ -35,5 +41,3 @@ const TodoList = () => {
     </div>
   );
 };
-
-export default TodoList

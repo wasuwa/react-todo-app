@@ -1,10 +1,4 @@
-export interface Todo {
-  id: number
-  title: string
-  done: boolean
-}
-
-export const TodoItem = (props: Todo) => {
+export const Todo = (props: { title: string }) => {
   const {title} = props;
 
   return (

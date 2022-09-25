@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import '@unocss/reset/tailwind.css'
+import './styles/index.css';
+import { Top } from './components/page/Top/Top';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Top />
   </React.StrictMode>
 );
