@@ -17,27 +17,27 @@ export const TodoList = () => {
     axios
     .get(endpoint)
     .then((res) => {
-      setTodos(res.data)
+      setTodos(res.data);
     })
     .catch((error) => {
-      console.log('通信失敗')
-      console.log(error.status)
+      console.log('通信失敗');
+      console.log(error.status);
     })
   }, []);
 
   return (
-    <div className='max-w-4xl mx-auto'>
+    <ul className='max-w-4xl mx-auto'>
       {
         todos && todos.length !== 0 && (
           todos.map((todo, index) => {
             return (
-              <div key={index}>
+              <li key={index}>
                 <Todo title={todo.title} />
-              </div>
+              </li>
             )
           })
         )
       }
-    </div>
+    </ul>
   );
 };
