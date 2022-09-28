@@ -1,13 +1,15 @@
-import { Wrapper } from "../../../common/utils/wrapper"
 import { Header } from "../../ui/Header/Header"
+import { PageError } from "../../ui/PageError/PageError"
 
 export const NotFound = () => {
   return (
-    <Wrapper>
+    <>
       <Header />
-      <main>
-        <p>ページが見つかりません</p>
+      <main className='bg-primary-background'>
+        <div className='m-one'>
+          <PageError text='ページが見つかりません' />
+        </div>
       </main>
-    </Wrapper>
+    </>
   )
 }

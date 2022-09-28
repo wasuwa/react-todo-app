@@ -7,7 +7,7 @@ export const Top = () => {
       <Header />
       <main className='bg-primary-background'>
         <div className='m-one'>
-          <TodoList/>
+          <TodoList />
         </div>
       </main>
     </>
