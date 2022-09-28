@@ -1,0 +1,62 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "react-app",
+        "react-app/jest",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+    ],
+    "overrides": [
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "import"
+    ],
+    "rules": {
+      // .tsx を許可
+      "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }],
+      // 'React' was used before it was defined を防ぐ
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": ["error"],
+      // import で拡張子の指定を不要にする
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never"
+        }
+      ],
+      // 空の依存配列を許可
+      "react-hooks/exhaustive-deps": "off"
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+          ]
+        }
+      }
+    }
+}
