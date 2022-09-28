@@ -1,15 +1,14 @@
+import { Wrapper } from '../../../common/utils/wrapper';
 import { Header } from '../../ui/Header/Header';
 import { TodoList } from '../../model/todo/TodoList';
 
 export const Top = () => {
   return (
-    <div className='flex flex-col min-h-screen'>
+    <Wrapper>
       <Header />
-      <main className='flex-1 overflow-x-hidden bg-gray-200'>
-        <div className='m-one'>
-          <TodoList/>
-        </div>
+      <main>
+        <TodoList/>
       </main>
-    </div>
+    </Wrapper>
   );
 }
