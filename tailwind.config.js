@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "primary": "var(--color-primary)",
         "primary-background": "var(--color-primary-background)",
+        "primary-content": "var(--color-primary-content)",
         "primary-text": "var(--color-primary-text)",
         "primary-border": "var(--color-primary-border)",
       },
