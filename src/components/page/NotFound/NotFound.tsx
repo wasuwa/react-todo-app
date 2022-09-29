@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from "../../ui/Header/Header"
-import { PageError } from "../../ui/PageError/PageError"
+import { Header } from '../../ui/Header/Header';
+import { PageError } from '../../ui/PageError/PageError';
 
 export const NotFound = () => {
   return (
@@ -12,5 +12,5 @@ export const NotFound = () => {
         </div>
       </main>
     </>
-  )
-}
+  );
+};

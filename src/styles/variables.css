@@ -1,10 +1,10 @@
 :root {
   /* color */
-  --color-primary: #2563EB;
-  --color-primary-background: #E5E7EB;
+  --color-primary: #2563eb;
+  --color-primary-background: #e5e7eb;
   --color-primary-content: #fff;
   --color-primary-text: #333;
-  --color-primary-border: #9CA3AF;
+  --color-primary-border: #9ca3af;
 
   /* space */
   --spacing-1: 20px;
