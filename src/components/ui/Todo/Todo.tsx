@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const Todo = (props: { title: string }) => {
   const {title} = props;
 

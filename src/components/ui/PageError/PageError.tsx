@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const PageError = (props: { text: string }) => {
   const {text} = props
   return (

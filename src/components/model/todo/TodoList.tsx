@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Todo } from '../../ui/Todo/Todo'
-import axios from 'axios';
+import { endpoint } from '../../../common/utils/apiClient';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 
 interface TodoModel {
   id: number
@@ -11,15 +12,13 @@ interface TodoModel {
 export const TodoList = () => {
   const [todos, setTodos] = useState<TodoModel[]>();
 
-  const endpoint: string = process.env.REACT_APP_API_ENDPOINT + '/todos';
-
   useEffect(() => {
     axios
-    .get(endpoint)
-    .then((res) => {
+    .get(endpoint('/todos'))
+    .then((res: AxiosResponse<TodoModel[]>) => {
       setTodos(res.data);
     })
-    .catch((error) => {
+    .catch((error: AxiosError<{ error: string }>) => {
       console.log('通信失敗');
       console.log(error.status);
     })
