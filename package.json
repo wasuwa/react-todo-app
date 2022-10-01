@@ -24,8 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts src/",
-    "fmt": "./node_modules/.bin/prettier --write src/**/*"
+    "lint": "eslint --ext .jsx,.js,.tsx,.ts src/",
+    "fmt": "prettier --write src/**/*"
   },
   "browserslist": {
     "production": [
@@ -46,6 +46,7 @@
     "eslint": "^8.24.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.8",
     "json-server": "^0.17.0",
     "postcss": "^8.4.16",
