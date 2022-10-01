@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Todo } from '../../ui/Todo/Todo';
 import { endpoint } from '../../../common/utils/apiClient';
+import { PageError } from '../../ui/PageError/PageError';
 
 interface TodoModel {
   id: number;
@@ -9,8 +10,13 @@ interface TodoModel {
   done: boolean;
 }
 
+interface TodoError {
+  message: string;
+}
+
 export const TodoList = () => {
   const [todos, setTodos] = useState<TodoModel[]>();
+  const [apiError, setApiError] = useState<TodoError>();
 
   useEffect(() => {
     axios
@@ -19,16 +25,19 @@ export const TodoList = () => {
         setTodos(res.data);
       })
       .catch((error: AxiosError<{ error: string }>) => {
-        console.log('通信失敗');
-        console.log(error.status);
+        setApiError({ message: error.message });
       });
   }, []);
+
+  if (apiError) {
+    return <PageError text={apiError.message} />;
+  }
 
   return (
     <ul className='max-w-4xl mx-auto'>
       {todos &&
         todos.length !== 0 &&
-        todos.map((todo) => {
+        todos.map(todo => {
           return (
             <li key={todo.id}>
               <Todo title={todo.title} />
