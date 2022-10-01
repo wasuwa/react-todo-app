@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Todo } from '../../ui/Todo/Todo';
-import { endpoint } from '../../../common/utils/apiClient';
+import { getEndpoint } from '../../../common/utils/endpoint';
 import { PageError } from '../../ui/PageError/PageError';
 
 interface TodoModel {
@@ -19,8 +19,9 @@ export const TodoList = () => {
   const [apiError, setApiError] = useState<TodoError>();
 
   useEffect(() => {
+    const endpoint = getEndpoint('todos');
     axios
-      .get(endpoint('/todos'))
+      .get(endpoint)
       .then((res: AxiosResponse<TodoModel[]>) => {
         setTodos(res.data);
       })
