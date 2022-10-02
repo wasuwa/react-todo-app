@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useErrorHandler } from 'react-error-boundary';
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import { Todo } from '../../ui/Todo/Todo';
+import { TodoItem } from './TodoItem';
 import { getEndpoint } from '../../../common/endpoint';
 
 interface TodoListModel {
@@ -12,7 +12,7 @@ interface TodoListModel {
 
 export const TodoList = () => {
   const [todos, setTodos] = useState<TodoListModel[]>();
-  const errorHandler = useErrorHandler()
+  const errorHandler = useErrorHandler();
 
   useEffect(() => {
     const endpoint = getEndpoint('todos');
@@ -31,11 +31,7 @@ export const TodoList = () => {
       {todos &&
         todos.length !== 0 &&
         todos.map(todo => {
-          return (
-            <li key={todo.id}>
-              <Todo title={todo.title} />
-            </li>
-          );
+          return <TodoItem key={todo.id} id={todo.id} title={todo.title} />;
         })}
     </ul>
   );

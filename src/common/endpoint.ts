@@ -46,6 +46,9 @@ export const getEndpoint = (pathName: string, params?: PathParams): string => {
   }
 
   if (!needsParamsEmbedding(path)) {
+    if (params) {
+      throw new Error('不要なパラメータが存在します');
+    }
     return endpoint + path;
   }
 
@@ -62,7 +65,10 @@ export const getEndpoint = (pathName: string, params?: PathParams): string => {
 
   let pathAfterReplace = path;
   paramNames.forEach(name => {
-    pathAfterReplace = pathAfterReplace.replace(`{${name}}`, String(params[name]));
+    pathAfterReplace = pathAfterReplace.replace(
+      `{${name}}`,
+      String(params[name])
+    );
   });
 
   return endpoint + pathAfterReplace;
