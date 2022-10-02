@@ -1,37 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import { useErrorHandler } from 'react-error-boundary';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Todo } from '../../ui/Todo/Todo';
 import { getEndpoint } from '../../../common/endpoint';
 
-interface TodoModel {
+interface TodoListModel {
   id: number;
   title: string;
   done: boolean;
 }
 
-interface TodoError {
-  message: string;
-}
-
 export const TodoList = () => {
-  const [todos, setTodos] = useState<TodoModel[]>();
-  const [apiError, setApiError] = useState<TodoError>();
+  const [todos, setTodos] = useState<TodoListModel[]>();
+  const errorHandler = useErrorHandler()
 
   useEffect(() => {
     const endpoint = getEndpoint('todos');
     axios
       .get(endpoint)
-      .then((res: AxiosResponse<TodoModel[]>) => {
+      .then((res: AxiosResponse<TodoListModel[]>) => {
         setTodos(res.data);
       })
       .catch((error: AxiosError<{ error: string }>) => {
-        setApiError({ message: error.message });
+        errorHandler(error);
       });
   }, []);
-
-  if (apiError) {
-    throw new Error(apiError.message);
-  }
 
   return (
     <ul className='max-w-4xl mx-auto'>
