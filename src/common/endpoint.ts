@@ -1,5 +1,5 @@
 interface PathParams {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 
 const apiPaths = {
@@ -40,7 +40,7 @@ export const getEndpoint = (pathName: string, params?: PathParams): string => {
   }
 
   const paths = apiPaths as PathParams;
-  const path = paths[pathName];
+  const path = paths[pathName] as string;
   if (typeof path === 'undefined') {
     throw new Error('指定されたAPIのパスが存在しません');
   }
@@ -62,7 +62,7 @@ export const getEndpoint = (pathName: string, params?: PathParams): string => {
 
   let pathAfterReplace = path;
   paramNames.forEach(name => {
-    pathAfterReplace = pathAfterReplace.replace(`{${name}}`, params[name]);
+    pathAfterReplace = pathAfterReplace.replace(`{${name}}`, String(params[name]));
   });
 
   return endpoint + pathAfterReplace;
