@@ -1,4 +1,6 @@
 import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorFallback } from '../../functional/ErrorBoundary/ErrorBoundary';
 import { Header } from '../../ui/Header/Header';
 import { PageError } from '../../ui/PageError/PageError';
 
@@ -8,7 +10,9 @@ export const NotFound = () => {
       <Header />
       <main className='bg-primary-background'>
         <div className='m-one'>
-          <PageError text='ページが見つかりません' />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <PageError text='ページが見つかりません' />
+          </ErrorBoundary>
         </div>
       </main>
     </>

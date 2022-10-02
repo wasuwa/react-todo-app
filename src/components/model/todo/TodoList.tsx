@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Todo } from '../../ui/Todo/Todo';
-import { getEndpoint } from '../../../common/utils/endpoint';
-import { PageError } from '../../ui/PageError/PageError';
+import { getEndpoint } from '../../../common/endpoint';
 
 interface TodoModel {
   id: number;
@@ -31,7 +30,7 @@ export const TodoList = () => {
   }, []);
 
   if (apiError) {
-    return <PageError text={apiError.message} />;
+    throw new Error(apiError.message);
   }
 
   return (
