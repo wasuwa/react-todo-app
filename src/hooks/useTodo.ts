@@ -9,7 +9,10 @@ interface Todo {
   done: boolean;
 }
 
-export const useTodo = (): { todoList: Todo[] } => {
+export const useTodo = (): {
+  todoList: Todo[];
+  deleteTodo: (id: number) => void;
+} => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
   const errorHandler = useErrorHandler();
 
@@ -25,5 +28,21 @@ export const useTodo = (): { todoList: Todo[] } => {
       });
   }, []);
 
-  return { todoList };
+  const deleteTodo = (id: number): void => {
+    try {
+      const endpoint = getEndpoint('deleteTodo', { id });
+      axios.delete(endpoint).catch((error: AxiosError<{ error: string }>) => {
+        errorHandler(error);
+      });
+    } catch (error) {
+      errorHandler(error);
+    }
+
+    const todos = todoList.filter(todo => {
+      return todo.id !== id;
+    });
+    setTodoList(todos);
+  };
+
+  return { todoList, deleteTodo };
 };
