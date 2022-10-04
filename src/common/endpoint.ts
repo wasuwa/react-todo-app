@@ -4,7 +4,7 @@ interface PathParams {
 
 const apiPaths = {
   todos: '/todos',
-  deleteTodo: `/todos/{id}`,
+  doneTodo: '/todos/{id}',
 } as const;
 
 const needsParamsEmbedding = (path: string): boolean => {

@@ -11,7 +11,7 @@ interface Todo {
 
 export const useTodo = (): {
   todoList: Todo[];
-  deleteTodo: (id: number) => void;
+  doneTodo: (id: number) => void;
 } => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
   const errorHandler = useErrorHandler();
@@ -28,21 +28,28 @@ export const useTodo = (): {
       });
   }, []);
 
-  const deleteTodo = (id: number): void => {
-    try {
-      const endpoint = getEndpoint('deleteTodo', { id });
-      axios.delete(endpoint).catch((error: AxiosError<{ error: string }>) => {
-        errorHandler(error);
-      });
-    } catch (error) {
-      errorHandler(error);
-    }
+  const doneTodo = (id: number): void => {
+    const todos = todoList.map(todo => {
+      if (todo.id !== id) {
+        return todo;
+      }
+      const toggleTodo = todo;
+      toggleTodo.done = !toggleTodo.done;
 
-    const todos = todoList.filter(todo => {
-      return todo.id !== id;
+      try {
+        const endpoint = getEndpoint('doneTodo', { id });
+        axios
+          .put(endpoint, toggleTodo)
+          .catch((error: AxiosError<{ error: string }>) => {
+            errorHandler(error);
+          });
+      } catch (error) {
+        errorHandler(error);
+      }
+      return toggleTodo;
     });
     setTodoList(todos);
   };
 
-  return { todoList, deleteTodo };
+  return { todoList, doneTodo };
 };

@@ -3,22 +3,26 @@ import { TodoItem } from './TodoItem';
 import { useTodo } from '../../../hooks/useTodo';
 
 export const TodoList = () => {
-  const { todoList, deleteTodo } = useTodo();
+  const { todoList, doneTodo } = useTodo();
 
   return (
     <ul className='max-w-4xl mx-auto'>
       {todoList &&
         todoList.length !== 0 &&
-        todoList.map(todo => {
-          return (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              title={todo.title}
-              todoDeleteHandler={deleteTodo}
-            />
-          );
-        })}
+        todoList
+          .filter(todo => {
+            return !todo.done;
+          })
+          .map(todo => {
+            return (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                title={todo.title}
+                todoDoneHandler={doneTodo}
+              />
+            );
+          })}
     </ul>
   );
 };

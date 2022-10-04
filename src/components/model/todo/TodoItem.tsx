@@ -4,13 +4,13 @@ import { Todo } from '../../ui/Todo/Todo';
 export const TodoItem = (props: {
   id: number;
   title: string;
-  todoDeleteHandler: (id: number) => void;
+  todoDoneHandler: (id: number) => void;
 }) => {
-  const { id, title, todoDeleteHandler } = props;
+  const { id, title, todoDoneHandler } = props;
 
   return (
     <li>
-      <Todo id={id} title={title} todoDeleteHandler={todoDeleteHandler} />
+      <Todo id={id} title={title} todoDeleteHandler={todoDoneHandler} />
     </li>
   );
 };
