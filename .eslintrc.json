@@ -59,7 +59,11 @@
         "unnamedComponents": "arrow-function"
       }],
       // アロー関数を囲む中括弧の使用を強制しない
-      "arrow-body-style": ["error", "always"]
+      "arrow-body-style": ["error", "always"],
+      // prop のスプレッド構文を許可する
+      "react/jsx-props-no-spreading": ["error", {
+        "html": "ignore"
+      }]
     },
     "settings": {
       "import/resolver": {
