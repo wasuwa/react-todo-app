@@ -18,6 +18,7 @@ export const TodoList = (props: Props) => {
           .filter(todo => {
             return !todo.done;
           })
+          .reverse()
           .map(todo => {
             return (
               <TodoItem
