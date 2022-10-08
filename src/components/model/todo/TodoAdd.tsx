@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { FormError } from '../../ui/FormError/FormError';
 
 interface FormInput {
   title: string;
@@ -16,18 +17,43 @@ function onPromise<T>(promise: (event: SyntheticEvent) => Promise<T>) {
 }
 
 export const TodoAdd = () => {
-  const { register, handleSubmit } = useForm<FormInput>();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormInput>();
   const onSubmit: SubmitHandler<FormInput> = data => {
     console.log(data);
   };
 
+  const borderColor = errors.title
+    ? 'border-primary-error'
+    : 'border-primary-border';
+
   return (
-    <form onSubmit={onPromise(handleSubmit(onSubmit))}>
-      <label htmlFor='todoTitle'>
-        タスク名
-        <input type='text' id='todoTitle' {...register('title')} />
+    <form
+      onSubmit={onPromise(handleSubmit(onSubmit))}
+      className='mb-one p-one bg-primary-content'
+    >
+      <label htmlFor='todoTitle' className='block mb-4 primary-text text-small'>
+        タイトル
+        <input
+          type='text'
+          id='todoTitle'
+          {...register('title', { required: 'タイトルは必須です' })}
+          className={`block border w-full mt-0.5 p-0.5 text-primary-text ${borderColor}`}
+        />
+        {errors.title && errors.title.message && (
+          <FormError message={errors.title.message} />
+        )}
       </label>
-      <button type='submit' id='todoSubmit'>作成</button>
+      <button
+        type='submit'
+        id='todoSubmit'
+        className='block w-full p-1 text-white font-bold bg-primary'
+      >
+        作成
+      </button>
     </form>
   );
 };

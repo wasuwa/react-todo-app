@@ -9,7 +9,7 @@ export const NotFound = () => {
     <>
       <Header />
       <main className='bg-primary-background'>
-        <div className='m-one'>
+        <div className='mx-one my-two'>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <PageError text='ページが見つかりません' />
           </ErrorBoundary>

@@ -6,7 +6,7 @@ export const TodoList = () => {
   const { todoList, doneTodo } = useTodo();
 
   return (
-    <ul className='max-w-4xl mx-auto'>
+    <ul>
       {todoList &&
         todoList.length !== 0 &&
         todoList

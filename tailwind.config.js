@@ -10,6 +10,7 @@ module.exports = {
         "primary-content": "var(--color-primary-content)",
         "primary-text": "var(--color-primary-text)",
         "primary-border": "var(--color-primary-border)",
+        "primary-error": "var(--color-primary-error)",
       },
       spacing: {
         one: "var(--spacing-1)",
