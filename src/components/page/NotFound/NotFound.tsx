@@ -1,6 +1,7 @@
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../functional/ErrorBoundary/ErrorBoundary';
+import { Footer } from '../../ui/Footer/Footer';
 import { Header } from '../../ui/Header/Header';
 import { PageError } from '../../ui/PageError/PageError';
 
@@ -15,6 +16,7 @@ export const NotFound = () => {
           </ErrorBoundary>
         </div>
       </main>
+      <Footer />
     </>
   );
 };

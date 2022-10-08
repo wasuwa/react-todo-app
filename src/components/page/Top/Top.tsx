@@ -6,6 +6,7 @@ import { Header } from '../../ui/Header/Header';
 import { TodoAdd } from '../../model/todo/TodoAdd';
 import { TodoList } from '../../model/todo/TodoList';
 import { Head } from '../../ui/Head/Head';
+import { Footer } from '../../ui/Footer/Footer';
 
 export const Top = () => {
   const { todoList, createTodo, doneTodo } = useTodo();
@@ -25,6 +26,7 @@ export const Top = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 };
