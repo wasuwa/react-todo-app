@@ -8,4 +8,8 @@
 
   /* space */
   --spacing-1: 20px;
+  --spacing-2: 30px;
+
+  /* size */
+  --size-small: 14px;
 }

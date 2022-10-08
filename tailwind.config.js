@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
@@ -12,7 +13,11 @@ module.exports = {
       },
       spacing: {
         one: "var(--spacing-1)",
+        two: "var(--spacing-2)"
       },
+      fontSize: {
+        "small": "var(--size-small)"
+      }
     },
   },
   plugins: [],
