@@ -1,9 +1,14 @@
 import React from 'react';
+import { Todo } from '../../../hooks/useTodo';
 import { TodoItem } from './TodoItem';
-import { useTodo } from '../../../hooks/useTodo';
 
-export const TodoList = () => {
-  const { todoList, doneTodo } = useTodo();
+type Props = {
+  todoList: Todo[];
+  todoDoneHandler: (id: number) => void;
+};
+
+export const TodoList = (props: Props) => {
+  const { todoList, todoDoneHandler } = props;
 
   return (
     <ul>
@@ -19,7 +24,7 @@ export const TodoList = () => {
                 key={todo.id}
                 id={todo.id}
                 title={todo.title}
-                todoDoneHandler={doneTodo}
+                todoDoneHandler={todoDoneHandler}
               />
             );
           })}

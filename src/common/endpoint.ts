@@ -4,6 +4,7 @@ interface PathParams {
 
 const apiPaths = {
   todos: '/todos',
+  createTodo: '/todos',
   doneTodo: '/todos/{id}',
 } as const;
 

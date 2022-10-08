@@ -2,6 +2,10 @@ import React, { SyntheticEvent } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormError } from '../../ui/FormError/FormError';
 
+type Props = {
+  todoCreateHandler: (title: string) => void;
+};
+
 interface FormInput {
   title: string;
 }
@@ -16,14 +20,15 @@ function onPromise<T>(promise: (event: SyntheticEvent) => Promise<T>) {
   };
 }
 
-export const TodoAdd = () => {
+export const TodoAdd = (props: Props) => {
+  const { todoCreateHandler } = props;
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<FormInput>();
-  const onSubmit: SubmitHandler<FormInput> = data => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormInput> = todo => {
+    todoCreateHandler(todo.title);
   };
 
   const borderColor = errors.title

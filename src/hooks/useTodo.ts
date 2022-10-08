@@ -3,7 +3,7 @@ import { useErrorHandler } from 'react-error-boundary';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { getEndpoint } from '../common/endpoint';
 
-interface Todo {
+export interface Todo {
   id: number;
   title: string;
   done: boolean;
@@ -11,6 +11,7 @@ interface Todo {
 
 export const useTodo = (): {
   todoList: Todo[];
+  createTodo: (title: string) => void;
   doneTodo: (id: number) => void;
 } => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -27,6 +28,24 @@ export const useTodo = (): {
         errorHandler(error);
       });
   }, []);
+
+  const createTodo = (title: string): void => {
+    const todo = { id: 0, title, done: false };
+
+    try {
+      const endpoint = getEndpoint('createTodo');
+      axios
+        .post(endpoint, todo)
+        .catch((error: AxiosError<{ error: string }>) => {
+          errorHandler(error);
+        });
+    } catch (error) {
+      errorHandler(error);
+    }
+
+    todoList.push(todo);
+    setTodoList(todoList);
+  };
 
   const doneTodo = (id: number): void => {
     const todos = todoList.map(todo => {
@@ -51,5 +70,5 @@ export const useTodo = (): {
     setTodoList(todos);
   };
 
-  return { todoList, doneTodo };
+  return { todoList, createTodo, doneTodo };
 };
