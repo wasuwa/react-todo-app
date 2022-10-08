@@ -15,7 +15,7 @@ export const Todo = (props: {
         onClick={() => {
           todoDeleteHandler(id);
         }}
-        className='text-primary font-bold'
+        className='shrink-0 pl-3 text-primary font-bold'
       >
         完了
       </button>
