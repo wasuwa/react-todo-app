@@ -10,25 +10,31 @@ type Props = {
 export const TodoList = (props: Props) => {
   const { todoList, todoDoneHandler } = props;
 
+  if (todoList.length === 0) {
+    return <p className='text-small text-primary-text'>Todoが存在しません</p>;
+  }
+
   return (
-    <ul>
-      {todoList &&
-        todoList.length !== 0 &&
-        todoList
-          .filter(todo => {
-            return !todo.done;
-          })
-          .reverse()
-          .map(todo => {
-            return (
-              <TodoItem
-                key={todo.id}
-                id={todo.id}
-                title={todo.title}
-                todoDoneHandler={todoDoneHandler}
-              />
-            );
-          })}
-    </ul>
+    <div>
+      {todoList && (
+        <ul>
+          {todoList
+            .filter(todo => {
+              return !todo.done;
+            })
+            .reverse()
+            .map(todo => {
+              return (
+                <TodoItem
+                  key={todo.id}
+                  id={todo.id}
+                  title={todo.title}
+                  todoDoneHandler={todoDoneHandler}
+                />
+              );
+            })}
+        </ul>
+      )}
+    </div>
   );
 };

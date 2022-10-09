@@ -40,7 +40,10 @@ export const TodoAdd = (props: Props) => {
       onSubmit={onPromise(handleSubmit(onSubmit))}
       className='mb-one p-one bg-primary-content'
     >
-      <label htmlFor='todoTitle' className='block mb-4 primary-text text-small'>
+      <label
+        htmlFor='todoTitle'
+        className='block mb-4 text-primary-text text-small'
+      >
         タイトル
         <input
           type='text'

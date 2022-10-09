@@ -18,8 +18,6 @@
         "plugin:import/typescript",
         "prettier"
     ],
-    "overrides": [
-    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -30,6 +28,11 @@
         "react",
         "@typescript-eslint",
         "import"
+    ],
+    "ignorePatterns": [
+      "jest.config.js",
+      "postcss.config.js",
+      "tailwind.config.js"
     ],
     "rules": {
       // .tsx を許可
