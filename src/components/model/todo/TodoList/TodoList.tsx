@@ -1,6 +1,6 @@
 import React from 'react';
 import { Todo } from '../../../../hooks/useTodo';
-import { TodoItem } from '../TodoItem/TodoItem';
+import { TodoItem } from '../../../ui/TodoItem/TodoItem';
 
 type Props = {
   todoList: Todo[];

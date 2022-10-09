@@ -1,24 +1,24 @@
 import React from 'react';
 
-export const Todo = (props: {
+export const TodoItem = (props: {
   id: number;
   title: string;
-  todoDeleteHandler: (id: number) => void;
+  todoDoneHandler: (id: number) => void;
 }) => {
-  const { id, title, todoDeleteHandler } = props;
+  const { id, title, todoDoneHandler } = props;
 
   return (
-    <div className='flex justify-between mb-one p-one bg-primary-content'>
+    <li className='flex justify-between mb-one p-one bg-primary-content'>
       <h3 className='text-primary-text font-bold'>{title}</h3>
       <button
         type='button'
         onClick={() => {
-          todoDeleteHandler(id);
+          todoDoneHandler(id);
         }}
         className='shrink-0 pl-3 text-primary font-bold'
       >
         完了
       </button>
-    </div>
+    </li>
   );
 };
