@@ -12,17 +12,11 @@ describe('TodoList', () => {
   ];
 
   describe('Todoが1個以上存在する場合', () => {
-    test('完了したTodoが表示されないこと', () => {
+    test('未完了のTodoが最新順で表示されていること', () => {
       render(
         <TodoList todoList={todos} todoDoneHandler={mockTodoDoneHandler} />
       );
       expect(screen.getAllByText(/勉強/)).toHaveLength(2);
-    });
-
-    test('最新順で表示されていること', () => {
-      render(
-        <TodoList todoList={todos} todoDoneHandler={mockTodoDoneHandler} />
-      );
 
       let index = 1;
       screen.getAllByText(/勉強/).forEach(element => {
@@ -33,12 +27,9 @@ describe('TodoList', () => {
   });
 
   describe('Todoリストが存在しない場合', () => {
-    test('Todoが表示されないこと', () => {
+    test('Todoが表示されず、メッセージが表示されること', () => {
       render(<TodoList todoList={[]} todoDoneHandler={mockTodoDoneHandler} />);
       expect(screen.queryAllByText(/勉強/)).toHaveLength(0);
-    });
-    test('メッセージが表示されること', () => {
-      render(<TodoList todoList={[]} todoDoneHandler={mockTodoDoneHandler} />);
       expect(screen.getByText('Todoが存在しません').textContent).toBe(
         'Todoが存在しません'
       );
