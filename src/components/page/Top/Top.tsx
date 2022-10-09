@@ -3,8 +3,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../functional/ErrorBoundary/ErrorBoundary';
 import { useTodo } from '../../../hooks/useTodo';
 import { Header } from '../../ui/Header/Header';
-import { TodoAdd } from '../../model/todo/TodoAdd';
-import { TodoList } from '../../model/todo/TodoList';
+import { TodoAdd } from '../../model/todo/TodoAdd/TodoAdd';
+import { TodoList } from '../../model/todo/TodoList/TodoList';
 import { Head } from '../../ui/Head/Head';
 import { Footer } from '../../ui/Footer/Footer';
 

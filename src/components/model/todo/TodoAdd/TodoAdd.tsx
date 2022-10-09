@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { FormError } from '../../ui/FormError/FormError';
+import { FormError } from '../../../ui/FormError/FormError';
 
 type Props = {
   todoCreateHandler: (title: string) => void;

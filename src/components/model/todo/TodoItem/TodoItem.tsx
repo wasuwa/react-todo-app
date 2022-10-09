@@ -1,5 +1,5 @@
 import React from 'react';
-import { Todo } from '../../ui/Todo/Todo';
+import { Todo } from '../../../ui/Todo/Todo';
 
 export const TodoItem = (props: {
   id: number;
