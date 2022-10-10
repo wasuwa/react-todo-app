@@ -38,7 +38,7 @@ export const TodoAdd = (props: Props) => {
   return (
     <form
       onSubmit={onPromise(handleSubmit(onSubmit))}
-      className='mb-one p-one bg-primary-content'
+      className='mb-two p-one bg-primary-content'
     >
       <label
         htmlFor='todoTitle'
