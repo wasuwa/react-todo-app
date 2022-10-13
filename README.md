@@ -13,7 +13,3 @@
 - Prettier
 - Axios
 - json-server
-
-## 今後の方針
-1. コンポーネントのテストを書く
-2. json-server を firebase に切り替える
