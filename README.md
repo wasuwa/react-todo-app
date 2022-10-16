@@ -7,7 +7,7 @@
   - react-hook-form
   - react-router-dom
   - react-error-boundary
-= TypeScript
+- TypeScript
 - Tailwind CSS
 - ESLint
 - Prettier
